@@ -82,25 +82,10 @@
        <ul class="header__nav">
        <li class="current"><a href="{% url 'home' %}" title="">Home</a></li>
        <li class="has-children">
-       <a href="#0" title="">Categories</a>
-       
-       <ul class="sub-menu">
-       <li><a href="category.html">Category list</a></li>
-       
-       </ul>
        </li>
-       <li class="has-children">
-       <a href="#0" title="">Blog Posts</a>
-       <ul class="sub-menu">
-       <li><a href="single-video.html">Video Post</a></li>
-       <li><a href="single-audio.html">Audio Post</a></li>
-       <li><a href="single-gallery.html">Gallery Post</a></li>
-       <li><a href="single-standard.html">Standard Post</a></li>
-       </ul>
-       </li>
-       <li><a href="styles.html" title="">Styles</a></li>
-       <li><a href="page-about.html" title="">About</a></li>
-       <li><a href="page-contact.html" title="">Contact</a></li>
+      
+       <li><a href="{% static 'page-about.html' %}" title="">About</a></li>
+       <li><a href="{% static 'page-contact.html' %}" title="">Contact</a></li>
        </ul> <!-- end header__nav -->
        
        <ul class="header__social">
@@ -233,11 +218,11 @@
         
                                 <div class="comment__content">
         
-                                    <div class="comment__info">
+                                    <!--<div class="comment__info">
                                         <div class="comment__author">Itachi Uchiha</div>
-        
+        -->
                                         <div class="comment__meta">
-                                            <div class="comment__time">April 30, 2019</div>
+                                            <div class="comment__time"></div>
                                             <div class="comment__reply">
                                                 <a class="comment-reply-link" href="#0">Reply</a>
                                             </div>
@@ -245,8 +230,7 @@
                                     </div>
         
                                     <div class="comment__text">
-                                    <p>Adhuc quaerendum est ne, vis ut harum tantas noluisse, id suas iisque mei. Nec te inani ponderum vulputate,
-                                    facilisi expetenda has et. Iudico dictas scriptorem an vim, ei alia mentitum est, ne has voluptua praesent.</p>
+                                    <p>Comment Section Coming Soon !!! </p>
                                     </div>
         
                                 </div>
@@ -265,7 +249,7 @@
 
                     <div class="column large-12 comment-respond">
 
-                        <!-- START respond -->
+                        <!-- START respond 
                         <div id="respond">
             
                             <h3 class="h2">Add Comment <span>Your email address will not be published</span></h3>
