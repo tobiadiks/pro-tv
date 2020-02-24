@@ -19,7 +19,7 @@ class Post(models.Model):
 	
 	title = models.CharField(max_length = 60)
 	author = models.ForeignKey(User, on_delete = models.CASCADE)
-	category = models.CharField(max_length = 100, choices = categories)
+	category = models.CharField(max_length = 100)
 	content = models.TextField()
 	quotes = models.TextField(blank = False)
 	cite = models.CharField(max_length=20, blank = False)
