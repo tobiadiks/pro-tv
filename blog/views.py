@@ -16,7 +16,6 @@ def single_page_blog(request, blog_id):
 	next_post = Post.objects.get(pk = posts.id + 1)"""
 	related_post=Post.objects.filter(category__contains= posts.category)
 #comment statement	
-	comment = Comment()
 	if request.method == 'POST' :
 		comment = Comment(request.POST)
 		if comment.is_valid():
