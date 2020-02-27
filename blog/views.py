@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Commenters
+from .forms import Comment
 posts = Post.objects.all
+comment_objects=Commenters.objects.all
+
 
 def blog(request):
 	
@@ -11,6 +14,17 @@ def single_page_blog(request, blog_id):
 	
 	"""prev_post = Post.objects.get(pk = posts.id - 1)
 	next_post = Post.objects.get(pk = posts.id + 1)"""
-	related_post=Post.objects.all().filter(category__contains= posts.category)
-	return render(request, 'single.html', {'posts':posts, 'related_post':related_post,})
+	related_post=Post.objects.filter(category__contains= posts.category)
+#comment statement	
+	comment = Comment()
+	if request.method == 'POST' :
+		comment = Comment(request.POST)
+		if comment.is_valid():
+			
+			s = Comment(commenter_name=comment.cleaned_data['cName'], email= comment.cleaned_data['cEmail'], comments = comment.cleaned_data['cMessage'])
+			s.save()
+	else:
+		comment = Comment()
+		
+	return render(request, 'single.html', {'posts':posts, 'related_post':related_post,'comment_objects':comment_objects ,})
 # Create your views here.

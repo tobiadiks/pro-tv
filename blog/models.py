@@ -25,9 +25,22 @@ class Post(models.Model):
 	cite = models.CharField(max_length=20, blank = True , help_text = "leave it empty if quotes are empty")
 	tags = models.CharField(max_length = 30, help_text = "Insert tags here for better SEO ", blank = False , default = "Protv")
 	published = models.DateTimeField(default = timezone.now , editable = False)
+
 	def __str__(self):
 		return self.title
 	class Meta:
 		ordering = ['-published']
-
+		
+class Commenters(models.Model):
+	post = models.ForeignKey(Post, on_delete = models.CASCADE)
+	commenter_name = models.CharField(max_length = 50)
+	email = models.EmailField(blank = True)
+	comments = models.TextField()
+	comment_time = models.DateTimeField(default = timezone.now, editable = False)
+	def __str__(self):
+		return self.email
+	class Meta:
+		ordering = ['comment_time']
+	
+	
 # Create your models here.
