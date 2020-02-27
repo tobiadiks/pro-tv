@@ -21,9 +21,9 @@ class Post(models.Model):
 	author = models.ForeignKey(User, on_delete = models.CASCADE)
 	category = models.CharField(max_length = 100)
 	content = models.TextField()
-	quotes = models.TextField(blank = False)
-	cite = models.CharField(max_length=20, blank = False)
-	tags = models.CharField(max_length = 30, help_text = "Insert tags here for better SEO ", blank = False)
+	quotes = models.TextField(blank = True , help_text = "Not Compulsory")
+	cite = models.CharField(max_length=20, blank = True , help_text = "leave it empty if quotes are empty")
+	tags = models.CharField(max_length = 30, help_text = "Insert tags here for better SEO ", blank = False , initial = "Protv")
 	published = models.DateTimeField(default = timezone.now , editable = False)
 	def __str__(self):
 		return self.title
