@@ -23,7 +23,7 @@ class Post(models.Model):
 	content = models.TextField()
 	quotes = models.TextField(blank = True , help_text = "Not Compulsory")
 	cite = models.CharField(max_length=20, blank = True , help_text = "leave it empty if quotes are empty")
-	tags = models.CharField(max_length = 30, help_text = "Insert tags here for better SEO ", blank = False , initial = "Protv")
+	tags = models.CharField(max_length = 30, help_text = "Insert tags here for better SEO ", blank = False , default = "Protv")
 	published = models.DateTimeField(default = timezone.now , editable = False)
 	def __str__(self):
 		return self.title
