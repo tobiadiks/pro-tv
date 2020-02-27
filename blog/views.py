@@ -21,10 +21,10 @@ def single_page_blog(request, blog_id):
 		comment = Comment(request.POST)
 		if comment.is_valid():
 			
-			s = Comment(commenter_name=comment.cleaned_data['cName'], email= comment.cleaned_data['cEmail'], comments = comment.cleaned_data['cMessage'])
+			s = Commenters(commenter_name=comment.cleaned_data['cName'], email= comment.cleaned_data['cEmail'], comments = comment.cleaned_data['cMessage'])
 			s.save()
-		else:
-			comment = Comment()
+	else:
+		comment = Comment()
 		
 	return render(request, 'single.html', {'posts':posts, 'related_post':related_post,'comment_objects':comment_objects ,})
 # Create your views here.
