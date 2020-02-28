@@ -18,8 +18,8 @@ def single_page_blog(request, blog_id):
 	next_post = Post.objects.get(pk = posts.id + 1)"""
 	related_post=Post.objects.filter(category__contains= posts.category)
 
-	comment = posts.Commenters
-	com = comment.objects.all
+	com = Commenters.objects.filter(post_id = blog_id)
+	
 	new_comment = None
 	#comment posted
 	if request.method == 'POST':
