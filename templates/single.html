@@ -190,13 +190,11 @@
                         <h3 class="h2">Comments</h3>
         
                         <!-- START commentlist -->
-                        <ol class="commentlist">
+                        <ul class="commentlist disc">
         
                             <li class="depth-1 comment">
         
-                                <div class="comment__avatar">
-                                    <img class="avatar" src="{% static 'images/avatars/user-01.jpg' %}" alt="" width="50" height="50">
-                                </div>
+                                
                                 {% for com in com %}
                                 <div class="comment__content">
         
@@ -218,11 +216,8 @@
                             </li> <!-- end comment level 1 -->
         
                             
-                                </div>
-        
-                            </li>  <!-- end comment level 1 -->
-        
-                        </ol>
+                               
+                        </ul>
                         <!-- END commentlist -->
 
                     </div> <!-- end comments -->
