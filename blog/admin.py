@@ -14,7 +14,7 @@ class UserAdmin(admin.ModelAdmin):
 	
 @admin.register(Commenters)
 class CommentersAdmin(admin.ModelAdmin):
-	list_display = ( 'commenter_name', 'comments')
+	list_display = ( 'commenter_name', 'comments', 'post')
 	list_per_page = 20
 
 
