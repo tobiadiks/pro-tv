@@ -12,13 +12,14 @@ def blog(request):
 	
 def single_page_blog(request, blog_id):
 	posts = Post.objects.get(pk=blog_id)
-	comments = post.comment
+	
 	
 	"""prev_post = Post.objects.get(pk = posts.id - 1)
 	next_post = Post.objects.get(pk = posts.id + 1)"""
 	related_post=Post.objects.filter(category__contains= posts.category)
-	post = get_object_or_404(Post, posts=posts)
-	comments = post.comments.all
+
+	comment = posts.Commenters
+	com = comment.objects.all
 	new_comment = None
 	#comment posted
 	if request.method == 'POST':
@@ -33,5 +34,5 @@ def single_page_blog(request, blog_id):
 	else:
 		comment_form = CommentForm()
 		
-	return render(request, 'single.html', {'posts':posts, 'related_post':related_post,'comments':comments,'comment_form':comment_form,})
+	return render(request, 'single.html', {'posts':posts, 'related_post':related_post,'com':com,'comment_form':comment_form,})
 # Create your views here.
