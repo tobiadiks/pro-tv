@@ -3,7 +3,7 @@ from .models import Post, Commenters
 from .forms import Comment
 
 posts = Post.objects.all
-comment_objects=Commenters.objects.all
+
 
 
 def blog(request):
@@ -12,6 +12,7 @@ def blog(request):
 	
 def single_page_blog(request, blog_id):
 	posts = Post.objects.get(pk=blog_id)
+	comment_objects = Commenters.objects.all
 	
 	"""prev_post = Post.objects.get(pk = posts.id - 1)
 	next_post = Post.objects.get(pk = posts.id + 1)"""
@@ -24,7 +25,7 @@ def single_page_blog(request, blog_id):
 			email= comment.cleaned_data['cEmail']
 			comments = comment.cleaned_data['cMessage']
 			
-			s = Commenters(post = blog_id, commenter_name = commenter_name, email = email, comments = comments)
+			s = Commenters( commenter_name = commenter_name, email = email, comments = comments)
 			
 			
 			s.save()
