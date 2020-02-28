@@ -201,7 +201,7 @@
                                 <div class="comment__content">
         
                                     <div class="comment__info">
-                                        <div class="comment__author">{{ comment.commenter_name }}</div>
+                                        <div class="comment__author">{{ comment.commenter_name }}, {{ comment.comment_time }}</div>
             
                                         </div>
                                     </div>
@@ -235,22 +235,10 @@
                     <form name="contactForm" id="contactForm" method="POST" validate  action="" autocomplete="off">{% csrf_token %}
                     <fieldset>
                     
-                    <div class="form-field">
-                    <input name="cName" id="cName" class="full-width" placeholder="Your Name" value="" type="text">
-                    </div>
                     
-                    <div class="form-field">
-                    <input name="cEmail" id="cEmail" class="full-width" placeholder="Your Email" value="" type="text">
-                    </div>
-                    
-                    
-                    
-                    <div class="message form-field">
-                    <textarea name="cMessage" id="cMessage" class="full-width" placeholder="Your Message"></textarea>
-                    </div>
                     
                     <input name="submit" id="submit" class="btn btn--primary btn-wide btn--large full-width" value="Add Comment" type="submit">
-                    
+                    {{ comment_form.as_p }}
                     </fieldset>
                     </form> <!-- end form -->
                     

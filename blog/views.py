@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Post, Commenters
-from .forms import Comment
+from .models import Post
+from .forms import CommentForm
 
 posts = Post.objects.all
 
@@ -12,25 +12,26 @@ def blog(request):
 	
 def single_page_blog(request, blog_id):
 	posts = Post.objects.get(pk=blog_id)
-	comment_objects = Commenters.objects.all
+	comments = post.comment
 	
 	"""prev_post = Post.objects.get(pk = posts.id - 1)
 	next_post = Post.objects.get(pk = posts.id + 1)"""
 	related_post=Post.objects.filter(category__contains= posts.category)
-#comment statement	
-	if request.method == 'POST' :
-		comment = Comment(request.POST)
-		if comment.is_valid():
-			commenter_name=comment.cleaned_data['cName']
-			email= comment.cleaned_data['cEmail']
-			comments = comment.cleaned_data['cMessage']
-			
-			s = Commenters( commenter_name = commenter_name, email = email, comments = comments)
-			
-			
-			s.save()
+	post = get_object_or_404(Post, pk=blog_id)
+	comments = post.comments.all
+	new_comment = None
+	#comment posted
+	if request.method == 'POST':
+		comment_form = CommentForm(data=request.POST)
+		if comment_form.is_valid():
+			# Create Comment object but don't save to database yet
+			new_comment = comment_form.save(commit=False)
+			# Assign the current post to the comment
+			new_comment.post = post
+			# Save the comment to the database
+			new_comment.save()
 	else:
-		comment = Comment()
+		comment_form = CommentForm()
 		
-	return render(request, 'single.html', {'posts':posts, 'related_post':related_post,'comment_objects':comment_objects ,})
+	return render(request, 'single.html', {'posts':posts, 'related_post':related_post,'comments':comments,'comment_form':comment_form,})
 # Create your views here.
