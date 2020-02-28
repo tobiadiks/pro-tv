@@ -5,7 +5,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>ProTv</title>
+    <title>{{ posts.title }}</title>
     <meta name="description" content="">
     <meta name="author" content="">
   {% load static %}
@@ -201,13 +201,13 @@
                                 <div class="comment__content">
         
                                     <div class="comment__info">
-                                        <div class="comment__author">{{ comment.name }}</div>
+                                        <div class="comment__author">{{ comment.commenter_name }}</div>
             
                                         </div>
                                     </div>
         
                                     <div class="comment__text">
-                                    <p>{{ comment.name }} </p>
+                                    <p>{{ comment.comments }} </p>
                                     </div>
         {% empty %}
         <div class="comment__text">
