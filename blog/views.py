@@ -17,7 +17,7 @@ def single_page_blog(request, blog_id):
 	"""prev_post = Post.objects.get(pk = posts.id - 1)
 	next_post = Post.objects.get(pk = posts.id + 1)"""
 	related_post=Post.objects.filter(category__contains= posts.category)
-	post = get_object_or_404(Post, pk=blog_id)
+	post = get_object_or_404(Post, posts=posts)
 	comments = post.comments.all
 	new_comment = None
 	#comment posted
