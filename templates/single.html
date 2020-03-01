@@ -193,11 +193,11 @@
         
                         <!-- START commentlist -->
                         <ul class="commentlist disc">
-        
+         {% for com in com %}
                             <li class="depth-1 comment">
         
                                 
-                                {% for com in com %}
+                               
                                 <div class="comment__content">
         
                                     <div class="comment__info">
@@ -214,9 +214,9 @@
         <p>No Comments</p>
         </div>
                                 </div>
-        {% endfor %}
-                            </li> <!-- end comment level 1 -->
         
+                            </li> <!-- end comment level 1 -->
+        {% endfor %}
                             
                                
                         </ul>
@@ -227,7 +227,7 @@
                     <!-- START respond -->
                     <div id="respond">
                     
-                    <h3 class="h2">Add Comment <span>Your email address will not be published</span></h3>
+                    <h3 class="h3">Add Comment <span>Your email address will not be published</span></h3>
                     
                     <form name="contactForm" id="contactForm" method="POST" validate  action="" autocomplete="off">{% csrf_token %}
                     <fieldset>
