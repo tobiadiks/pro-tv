@@ -115,7 +115,7 @@
                             
                         <div class="entry__thumb">
                             <a href="{% url  'blog_id' post.id %}" class="entry__thumb-link">
-                                <img src="{% static 'images/thumbs/masonry/beetle-600.jpg' %}" 
+                                <img src={% if post.image %} "{{ post.image }}" {% else %} "{% static 'images/thumbs/masonry/beetle-600.jpg' %}" {% endif %}
                                   alt="">
                             </a>
                         </div>
