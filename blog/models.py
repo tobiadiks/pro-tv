@@ -20,7 +20,7 @@ class Post(models.Model):
 	title = models.CharField(max_length = 60)
 	author = models.ForeignKey(User, on_delete = models.CASCADE)
 	category = models.CharField(max_length = 100)
-        image = models.URLField(help_text = 'your image imgbb link')
+        image = models.URLField(help_text ='your image imgbb link')
 	content = models.TextField()
 	quotes = models.TextField(blank = True , help_text = "Not Compulsory")
 	cite = models.CharField(max_length=20, blank = True , help_text = "leave it empty if quotes are empty")
